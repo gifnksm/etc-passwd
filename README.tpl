@@ -1,4 +1,6 @@
-[![Crates.io](https://img.shields.io/crates/v/etc-passwd.svg)](https://crates.io/crates/etc-passwd)
+[![Crates.io](https://img.shields.io/crates/v/{{crate}}.svg)](https://crates.io/crates/{{crate}})
+[![Docs.rs](https://docs.rs/{{crate}}/badge.svg)](https://docs.rs/{{crate}})
+![LICENSE](https://img.shields.io/crates/l/{{crate}}.svg)
 {{badges}}
 
 # {{crate}}
