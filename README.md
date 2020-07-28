@@ -1,6 +1,7 @@
 [![Crates.io](https://img.shields.io/crates/v/etc-passwd.svg)](https://crates.io/crates/etc-passwd)
 [![Docs.rs](https://docs.rs/etc-passwd/badge.svg)](https://docs.rs/etc-passwd)
 ![LICENSE](https://img.shields.io/crates/l/etc-passwd.svg)
+[![Workflow Status](https://github.com/gifnksm/etc-passwd/workflows/main/badge.svg)](https://github.com/gifnksm/etc-passwd/actions?query=workflow%3A%22main%22)
 ![Maintenance](https://img.shields.io/badge/maintenance-passively--maintained-yellowgreen.svg)
 
 # etc-passwd
