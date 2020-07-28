@@ -168,6 +168,8 @@ where
 #[cfg(test)]
 mod test {
     use super::*;
+    use std::{fs::File, io::prelude::*, path::Path};
+
     type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
     #[test]
@@ -215,5 +217,31 @@ mod test {
     #[test]
     fn test_html_root_url() {
         version_sync::assert_html_root_url_updated!("src/lib.rs");
+    }
+
+    #[test]
+    fn test_readme_up_to_date() -> Result<()> {
+        let mut source = File::open("src/lib.rs")?;
+        let mut template = File::open("README.tpl")?;
+        let mut expected = cargo_readme::generate_readme(
+            Path::new("."),
+            &mut source,
+            Some(&mut template),
+            true,
+            true,
+            true,
+            true,
+        )?;
+        expected.push('\n');
+
+        let mut readme = String::new();
+        let mut file = File::open("README.md")?;
+        file.read_to_string(&mut readme)?;
+        for (l, r) in readme.lines().zip(expected.lines()) {
+            assert_eq!(l, r);
+        }
+        assert_eq!(readme, expected);
+
+        Ok(())
     }
 }
