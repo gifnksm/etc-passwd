@@ -38,8 +38,8 @@ if let Some(passwd) = Passwd::current_user()? {
 }
 ```
 
-[`getpwnam_r(3)`]: ../libc/fn.getpwnam_r.html
-[`getpwuid_r(3)`]: ../libc/fn.getpwuid_r.html
+[`getpwnam_r(3)`]: https://man7.org/linux/man-pages/man3/getpwnam_r.3.html
+[`getpwuid_r(3)`]: https://man7.org/linux/man-pages/man3/getpwuid_r.3.html
 
 ## License
 
