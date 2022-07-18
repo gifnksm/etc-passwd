@@ -2,6 +2,7 @@
 name = "etc-passwd"
 version = "0.1.1"
 edition = "2021"
+rust-version = "1.56.1"
 authors = ["NAKASHIMA, Makoto <makoto.nksm+github@gmail.com>"]
 description = "Get user information stored in the password file `/etc/passwd`."
 documentation = "https://docs.rs/etc-passwd"

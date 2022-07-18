@@ -1,10 +1,10 @@
+# etc-passwd
+
 [![Crates.io](https://img.shields.io/crates/v/etc-passwd.svg)](https://crates.io/crates/etc-passwd)
 [![Docs.rs](https://docs.rs/etc-passwd/badge.svg)](https://docs.rs/etc-passwd)
 ![LICENSE](https://img.shields.io/crates/l/etc-passwd.svg)
 [![Workflow Status](https://github.com/gifnksm/etc-passwd/workflows/CI/badge.svg)](https://github.com/gifnksm/etc-passwd/actions?query=workflow%3A%22CI%22)
 ![Maintenance](https://img.shields.io/badge/maintenance-passively--maintained-yellowgreen.svg)
-
-# etc-passwd
 
 Get user information stored in the password file `/etc/passwd`.
 
@@ -40,6 +40,14 @@ if let Some(passwd) = Passwd::current_user()? {
 
 [`getpwnam_r(3)`]: https://man7.org/linux/man-pages/man3/getpwnam_r.3.html
 [`getpwuid_r(3)`]: https://man7.org/linux/man-pages/man3/getpwuid_r.3.html
+
+## Minimum supported Rust version (MSRV)
+
+The minimum supported Rust version is **Rust 1.56.1**.
+At least the last 3 versions of stable Rust are supported at any given time.
+
+While a crate is pre-release status (0.x.x) it may have its MSRV bumped in a patch release.
+Once a crate has reached 1.x, any MSRV bump will be accompanied with a new minor version.
 
 ## License
 
