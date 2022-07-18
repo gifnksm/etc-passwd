@@ -18,7 +18,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-etc-passwd = "0.1.1"
+etc-passwd = "0.2.0"
 ```
 
 ## Examples
