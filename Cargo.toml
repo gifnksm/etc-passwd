@@ -11,7 +11,13 @@ license = "MIT OR Apache-2.0"
 keywords = ["unix", "passwd", "username", "home_directory", "login_shell"]
 categories = ["api-bindings", "os::unix-apis"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[package.metadata.release]
+pre-release-replacements = [
+    { file = "README.md", search = "etc-passwd = \"[0-9\\.]+\"", replace = "{{crate_name}} = \"{{version}}\"" },
+    { file = "src/lib.rs", search = "^//! etc-passwd = \"[0-9\\.]+\"", replace = "//! etc-passwd = \"{{version}}\"" },
+    { file = "src/lib.rs", search = "^#!\\[doc\\(html_root_url = \"https://docs.rs/etc-passwd/[0-9\\.]+\"\\)\\]", replace = "#![doc(html_root_url = \"https://docs.rs/etc-passwd/{{version}}\")]" },
+]
+pre-release-hook = ["cargo", "test"]
 
 [dependencies]
 libc = "0.2.126"
