@@ -14,10 +14,10 @@ categories = ["api-bindings", "os::unix-apis"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-libc = "0.2.73"
+libc = "0.2.126"
 
 [dev-dependencies]
-version-sync = "0.9.1"
+version-sync = "0.9.4"
 cargo-readme = "3.2.0"
 
 [badges]
