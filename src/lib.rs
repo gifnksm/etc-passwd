@@ -123,17 +123,16 @@ where
     let mut passwd = unsafe { mem::zeroed() };
     let amt = unsafe { libc::sysconf(libc::_SC_GETPW_R_SIZE_MAX) };
     let mut amt = libc::c_long::max(amt, 512) as usize;
-    let mut buf = Vec::with_capacity(amt);
+    let mut buf = vec![0; amt];
 
     loop {
-        buf.reserve(amt);
         let mut result = ptr::null_mut();
         unsafe {
             f(
                 key,
                 &mut passwd,
                 buf.as_mut_ptr(),
-                buf.capacity(),
+                buf.len(),
                 &mut result,
             );
         }
@@ -152,6 +151,7 @@ where
             // Insufficient buffer space
             libc::ERANGE => {
                 amt *= 2;
+                buf.resize(amt, 0);
                 continue;
             }
 
