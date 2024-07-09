@@ -128,13 +128,7 @@ where
     loop {
         let mut result = ptr::null_mut();
         unsafe {
-            f(
-                key,
-                &mut passwd,
-                buf.as_mut_ptr(),
-                buf.len(),
-                &mut result,
-            );
+            f(key, &mut passwd, buf.as_mut_ptr(), buf.len(), &mut result);
         }
 
         if !result.is_null() {
