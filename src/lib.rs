@@ -8,7 +8,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! etc-passwd = "0.2.0"
+//! etc-passwd = "0.2.1"
 //! ```
 //!
 //! # Examples
@@ -36,7 +36,7 @@
 //! [`getpwnam_r(3)`]: https://man7.org/linux/man-pages/man3/getpwnam_r.3.html
 //! [`getpwuid_r(3)`]: https://man7.org/linux/man-pages/man3/getpwuid_r.3.html
 
-#![doc(html_root_url = "https://docs.rs/etc-passwd/0.2.0")]
+#![doc(html_root_url = "https://docs.rs/etc-passwd/0.2.1")]
 #![warn(missing_docs)]
 #![warn(unused)]
 #![warn(unused_crate_dependencies)]
