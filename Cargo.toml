@@ -21,7 +21,7 @@ pre-release-replacements = [
 pre-release-hook = ["cargo", "test"]
 
 [dependencies]
-libc = "0.2.158"
+libc = "0.2.159"
 
 [dev-dependencies]
 version-sync = "0.9.4"
