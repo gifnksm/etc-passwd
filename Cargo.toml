@@ -21,11 +21,11 @@ pre-release-replacements = [
 pre-release-hook = ["cargo", "test"]
 
 [dependencies]
-libc = "0.2.167"
+libc = "0.2.168"
 
 [dev-dependencies]
-version-sync = "0.9.4"
-cargo-readme = "3.2.0"
+version-sync = "0.9.5"
+cargo-readme = "3.3.1"
 
 [badges]
 maintenance = { status = "passively-maintained" }
