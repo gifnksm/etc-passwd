@@ -86,23 +86,14 @@ impl Passwd {
     }
 
     unsafe fn from_c_struct(passwd: &libc::passwd) -> Self {
-        let libc::passwd {
-            pw_name,
-            pw_passwd,
-            pw_uid,
-            pw_gid,
-            pw_gecos,
-            pw_dir,
-            pw_shell,
-        } = *passwd;
         Self {
-            name: CStr::from_ptr(pw_name).to_owned(),
-            passwd: CStr::from_ptr(pw_passwd).to_owned(),
-            uid: pw_uid,
-            gid: pw_gid,
-            gecos: CStr::from_ptr(pw_gecos).to_owned(),
-            dir: CStr::from_ptr(pw_dir).to_owned(),
-            shell: CStr::from_ptr(pw_shell).to_owned(),
+            name: CStr::from_ptr(passwd.pw_name).to_owned(),
+            passwd: CStr::from_ptr(passwd.pw_passwd).to_owned(),
+            uid: passwd.pw_uid,
+            gid: passwd.pw_gid,
+            gecos: CStr::from_ptr(passwd.pw_gecos).to_owned(),
+            dir: CStr::from_ptr(passwd.pw_dir).to_owned(),
+            shell: CStr::from_ptr(passwd.pw_shell).to_owned(),
         }
     }
 }
@@ -174,7 +165,10 @@ mod test {
         assert_eq!(by_name.uid, 0);
         assert_eq!(by_name.gid, 0);
         assert_eq!(by_name.name.to_str()?, "root");
+        #[cfg(not(target_os = "macos"))]
         assert_eq!(by_name.dir.to_str()?, "/root");
+        #[cfg(target_os = "macos")]
+        assert_eq!(by_name.dir.to_str()?, "/var/root");
 
         assert_eq!(by_uid, by_name);
 
