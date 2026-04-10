@@ -25,7 +25,7 @@ libc = "0.2.184"
 
 [dev-dependencies]
 version-sync = "0.9.5"
-cargo-readme = "3.3.1"
+cargo-readme = "3.3.2"
 
 [badges]
 maintenance = { status = "passively-maintained" }
