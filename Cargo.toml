@@ -23,10 +23,21 @@ pre-release-hook = ["cargo", "test"]
 [dependencies]
 libc = "0.2.184"
 
-[dev-dependencies]
-version-sync = "0.9.5"
-cargo-readme = "3.3.1"
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.cargo-sync-rdme.badge]
+style = "flat-square"
+
+[package.metadata.cargo-sync-rdme.badge.badges]
+maintenance = true
+license = { link = "#license" }
+crates-io = true
+docs-rs = true
+rust-version = true
+github-actions = { workflows = "ci.yml" }
+codecov = true
 
 [badges]
 maintenance = { status = "passively-maintained" }
-github = { repository = "gifnksm/etc-passwd", workflow = "CI" }
