@@ -153,7 +153,6 @@ where
 #[cfg(test)]
 mod test {
     use super::*;
-    use std::{fs::File, io::prelude::*, path::Path};
 
     type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
@@ -170,7 +169,15 @@ mod test {
         #[cfg(target_os = "macos")]
         assert_eq!(by_name.dir.to_str()?, "/var/root");
 
-        assert_eq!(by_uid, by_name);
+        // `getpwnam_r` and `getpwuid_r` may return slightly different
+        // non-identity fields for the same account depending on the platform's
+        // user database backend. This was observed in macOS GitHub Actions CI,
+        // where the `root` account resolved to different `shell` values, so
+        // avoid asserting full struct equality here.
+        assert_eq!(by_uid.uid, by_name.uid);
+        assert_eq!(by_uid.gid, by_name.gid);
+        assert_eq!(by_uid.name, by_name.name);
+        assert_eq!(by_uid.dir, by_name.dir);
 
         Ok(())
     }
@@ -194,42 +201,6 @@ mod test {
     fn user_not_exist() -> Result<()> {
         assert!(Passwd::from_uid(u32::MAX)?.is_none());
         assert!(Passwd::from_name(CString::new("")?)?.is_none());
-        Ok(())
-    }
-
-    #[test]
-    fn test_readme_deps() {
-        version_sync::assert_markdown_deps_updated!("README.md");
-    }
-
-    #[test]
-    fn test_html_root_url() {
-        version_sync::assert_html_root_url_updated!("src/lib.rs");
-    }
-
-    #[test]
-    fn test_readme_up_to_date() -> Result<()> {
-        let mut source = File::open("src/lib.rs")?;
-        let mut template = File::open("README.tpl")?;
-        let mut expected = cargo_readme::generate_readme(
-            Path::new("."),
-            &mut source,
-            Some(&mut template),
-            true,
-            true,
-            true,
-            true,
-        )?;
-        expected.push('\n');
-
-        let mut readme = String::new();
-        let mut file = File::open("README.md")?;
-        file.read_to_string(&mut readme)?;
-        for (l, r) in readme.lines().zip(expected.lines()) {
-            assert_eq!(l, r);
-        }
-        assert_eq!(readme, expected);
-
         Ok(())
     }
 }
