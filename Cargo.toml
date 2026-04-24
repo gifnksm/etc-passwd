@@ -21,7 +21,7 @@ pre-release-replacements = [
 pre-release-hook = ["cargo", "test"]
 
 [dependencies]
-libc = "0.2.185"
+libc = "0.2.186"
 
 [package.metadata.docs.rs]
 all-features = true
