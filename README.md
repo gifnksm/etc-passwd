@@ -29,6 +29,9 @@ etc-passwd = "0.2.2"
 
 Get a current user information:
 
+[`getpwnam_r(3)`]: https://man7.org/linux/man-pages/man3/getpwnam_r.3.html
+[`getpwuid_r(3)`]: https://man7.org/linux/man-pages/man3/getpwuid_r.3.html
+
 ````rust
 use etc_passwd::Passwd;
 
@@ -43,9 +46,6 @@ if let Some(passwd) = Passwd::current_user()? {
     println!("oops! current user is not found... who are you?");
 }
 ````
-
-[`getpwnam_r(3)`]: https://man7.org/linux/man-pages/man3/getpwnam_r.3.html
-[`getpwuid_r(3)`]: https://man7.org/linux/man-pages/man3/getpwuid_r.3.html
 <!-- cargo-sync-rdme ]] -->
 
 ## Minimum supported Rust version (MSRV)

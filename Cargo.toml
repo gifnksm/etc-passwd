@@ -9,23 +9,23 @@ documentation = "https://docs.rs/etc-passwd"
 readme = "README.md"
 repository = "https://github.com/gifnksm/etc-passwd"
 license = "MIT OR Apache-2.0"
-keywords = ["unix", "passwd", "username", "home_directory", "login_shell"]
+keywords = ["home_directory", "login_shell", "passwd", "unix", "username"]
 categories = ["api-bindings", "os::unix-apis"]
 
 [package.metadata.release]
 pre-release-replacements = [
-    { file = "README.md", search = "etc-passwd = \"[0-9\\.]+\"", replace = "{{crate_name}} = \"{{version}}\"" },
-    { file = "src/lib.rs", search = "^//! etc-passwd = \"[0-9\\.]+\"", replace = "//! etc-passwd = \"{{version}}\"" },
-    { file = "src/lib.rs", search = "^#!\\[doc\\(html_root_url = \"https://docs.rs/etc-passwd/[0-9\\.]+\"\\)\\]", replace = "#![doc(html_root_url = \"https://docs.rs/etc-passwd/{{version}}\")]" },
+  { file = "README.md", search = "etc-passwd = \"[0-9\\.]+\"", replace = "{{crate_name}} = \"{{version}}\"" },
+  { file = "src/lib.rs", search = "^//! etc-passwd = \"[0-9\\.]+\"", replace = "//! etc-passwd = \"{{version}}\"" },
+  { file = "src/lib.rs", search = "^#!\\[doc\\(html_root_url = \"https://docs.rs/etc-passwd/[0-9\\.]+\"\\)\\]", replace = "#![doc(html_root_url = \"https://docs.rs/etc-passwd/{{version}}\")]" },
 ]
 pre-release-hook = ["cargo", "test"]
-
-[dependencies]
-libc = "0.2.190"
 
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.cargo-sync-rdme.rustdoc]
+toolchain = "nightly"
 
 [package.metadata.cargo-sync-rdme.badge]
 style = "flat-square"
@@ -38,6 +38,9 @@ docs-rs = true
 rust-version = true
 github-actions = { workflows = "ci.yml" }
 codecov = true
+
+[dependencies]
+libc = "0.2.190"
 
 [badges]
 maintenance = { status = "passively-maintained" }
