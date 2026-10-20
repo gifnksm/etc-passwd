@@ -40,7 +40,7 @@ github-actions = { workflows = "ci.yml" }
 codecov = true
 
 [dependencies]
-libc = "0.2.190"
+libc = "0.2.191"
 
 [badges]
 maintenance = { status = "passively-maintained" }
